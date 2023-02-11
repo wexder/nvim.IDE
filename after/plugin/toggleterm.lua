@@ -43,3 +43,5 @@ function _term2_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>ot", "<cmd>lua _term2_toggle()<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>oT", "<cmd>term<CR>", { noremap = true, silent = true })

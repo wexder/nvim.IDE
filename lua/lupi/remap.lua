@@ -23,7 +23,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set("n", "Q", "<nop>")
+-- vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -38,7 +38,8 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton game_of_life<CR>");
 
 
 vim.keymap.set("n", "<leader>wd", "<c-w>c")
-vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>")
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR><c-w>l")
+vim.keymap.set("n", "<leader>w=", "<c-w>=")
 
 vim.keymap.set("n", "<c-j>", "<c-w>j")
 vim.keymap.set("n", "<c-k>", "<c-w>k")

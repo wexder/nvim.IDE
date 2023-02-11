@@ -1,24 +1,5 @@
 local M = {}
 
-local bufferline = require("bufferline")
-
-bufferline.setup({
-    options = {
-        mode = "buffers", -- set to "tabs" to only show tabpages instead
-        numbers = "none", -- can be "none" | "ordinal" | "buffer_id" | "both" | function
-        close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
-            M.buf_kill("bd", bufnr, false)
-        end,
-    },
-})
-
-vim.keymap.set('n', '<leader>bk', function()
-    M.buf_kill()
-end)
-vim.keymap.set('n', 'H', [[<Cmd>BufferLineCyclePrev<CR>]], { noremap = true, silent = true })
-vim.keymap.set('n', 'L', [[<Cmd>BufferLineCycleNext<CR>]], { noremap = true, silent = true })
-
-
 -- Common kill function for bdelete and bwipeout
 -- credits: based on bbye and nvim-bufdel
 ---@param kill_command? string defaults to "bd"
@@ -90,3 +71,22 @@ function M.buf_kill(kill_command, bufnr, force)
         vim.cmd(string.format("%s %d", kill_command, bufnr))
     end
 end
+
+-- require("bufferline").setup({
+--     options = {
+--         mode = "buffers", -- set to "tabs" to only show tabpages instead
+--         numbers = "none", -- can be "none" | "ordinal" | "buffer_id" | "both" | function
+--         close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
+--             M.buf_kill("bd", bufnr, false)
+--         end,
+--     },
+-- })
+--
+vim.keymap.set('n', '<leader>bk', function()
+    M.buf_kill()
+end)
+
+vim.keymap.set('n', '<leader>tn', '<Cmd>tabnew<CR>', { noremap = true, silent = true })
+
+vim.keymap.set('n', 'H', '<Cmd>tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'L', '<Cmd>tabprevious<CR>', { noremap = true, silent = true })

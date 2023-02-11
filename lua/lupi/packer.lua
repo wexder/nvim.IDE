@@ -32,7 +32,6 @@ return require('packer').startup(function(use)
     }
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
-    -- Git related plugins
     use 'nvim-lualine/lualine.nvim' -- Fancier statusline
 
 
@@ -55,14 +54,23 @@ return require('packer').startup(function(use)
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' }, -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
+
         }
     }
+
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+
     use 'nvim-tree/nvim-web-devicons'
-    use { 'akinsho/bufferline.nvim',
-        tag = "v3.*",
-        requires = 'nvim-tree/nvim-web-devicons',
-    }
+    -- use {
+    --     'akinsho/bufferline.nvim',
+    --     branch = "main",
+    -- }
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup({
             shade_terminals = false,
@@ -117,7 +125,7 @@ return require('packer').startup(function(use)
         "ahmedkhalf/project.nvim",
         config = function()
             require("project_nvim").setup {
-                ignore_lsp = { "sumneko_lua" },
+                ignore_lsp = { "sumneko_lua", "terraformls" },
             }
         end
     }
@@ -129,5 +137,18 @@ return require('packer').startup(function(use)
     }
     use("eandrju/cellular-automaton.nvim")
     use { "mfussenegger/nvim-jdtls" }
+    use { 'mfussenegger/nvim-dap' }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use { "jose-elias-alvarez/null-ls.nvim" }
+    use { "jay-babu/mason-null-ls.nvim" }
+    use { "folke/neodev.nvim" }
+    use({
+        "aserowy/tmux.nvim",
+        config = function() return require("tmux").setup({
+                redirect_to_clipboard = true,
+            })
+        end
+    })
+    use { 'ray-x/go.nvim' }
+    use { 'ray-x/guihua.lua' }
 end)
