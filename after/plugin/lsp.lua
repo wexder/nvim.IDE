@@ -6,12 +6,6 @@ require("neodev").setup({
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-    'tsserver',
-    'sumneko_lua',
-    'rust_analyzer'
-})
-
 -- Fix Undefined global 'vim'
 lsp.configure('sumneko_lua', {
     settings = {
@@ -29,11 +23,11 @@ lsp.configure('sumneko_lua', {
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-})
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    })
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
@@ -90,11 +84,9 @@ null_ls.setup({
     on_attach = function(client, bufnr)
         null_opts.on_attach(client, bufnr)
     end,
-
     sources = {
         -- You can add tools not supported by mason.nvim
     }
-
 })
 
 -- See mason-null-ls.nvim's documentation for more details:

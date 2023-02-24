@@ -6,14 +6,14 @@ end
 -- Determine OS
 local home = os.getenv "HOME"
 local launcher_path = vim.fn.glob(
-    home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-)
+        home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+    )
 if #launcher_path == 0 then
     launcher_path = vim.fn.glob(
-        home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
-        1,
-        1
-    )[1]
+            home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
+            1,
+            1
+        )[1]
 end
 if vim.fn.has "mac" == 1 then
     WORKSPACE_PATH = home .. "/workspace/"
@@ -48,7 +48,7 @@ local workspace_dir = WORKSPACE_PATH .. project_name
 -- )
 local bundles = {
     vim.fn.glob(home ..
-        "/development/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
+    "/development/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
 };
 -- if #bundles == 0 then
 --   bundles = vim.fn.glob(
