@@ -46,3 +46,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.opt.foldmethod = "expr"
+vim.opt.clipboard = "unnamedplus"

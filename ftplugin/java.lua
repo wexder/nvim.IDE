@@ -6,8 +6,8 @@ end
 -- Determine OS
 local home = os.getenv "HOME"
 local launcher_path = vim.fn.glob(
-        home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-    )
+    home .. "/development/java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+)
 if #launcher_path == 0 then
     launcher_path = vim.fn.glob(
             home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
@@ -76,7 +76,7 @@ local config = {
         "-jar",
         launcher_path,
         "-configuration",
-        home .. "/.local/share/nvim/lsp_servers/jdtls/config_" .. CONFIG,
+        home .. "/development/java/jdtls/config_linux",
         "-data",
         workspace_dir,
     },
