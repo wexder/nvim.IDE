@@ -51,6 +51,8 @@ vim.keymap.set("n", "<c-right>", "<c-w>>")
 vim.keymap.set("n", "<c-up>", "<c-w>-")
 vim.keymap.set("n", "<c-down>", "<c-w>+")
 
+vim.keymap.set("n", "<leader>wf", "<cmd>vertical resize 1000<CR>")
+
 vim.keymap.set("t", "<c-j>", "<C-\\><C-n><c-w>j")
 vim.keymap.set("t", "<c-k>", "<C-\\><C-n><c-w>k")
 vim.keymap.set("t", "<c-h>", "<C-\\><C-n><c-w>h")

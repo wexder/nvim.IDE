@@ -23,11 +23,11 @@ lsp.configure('sumneko_lua', {
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    })
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+})
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
@@ -38,9 +38,9 @@ local MAX_LABEL_WIDTH = 40
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    },
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+        },
         {
             { name = 'buffer' },
         })
@@ -77,25 +77,19 @@ vim.diagnostic.config({
 })
 
 
-local null_ls = require('null-ls')
-local null_opts = lsp.build_options('null-ls', {})
-
-null_ls.setup({
-    on_attach = function(client, bufnr)
-        null_opts.on_attach(client, bufnr)
-    end,
-    sources = {
-        -- You can add tools not supported by mason.nvim
-    }
-})
-
 -- See mason-null-ls.nvim's documentation for more details:
 -- https://github.com/jay-babu/mason-null-ls.nvim#setup
 require('mason-null-ls').setup({
     ensure_installed = { "jq" },
     automatic_installation = false, -- You can still set this to `true`
-    automatic_setup = true,
+    handlers = {},
+})
+
+require("null-ls").setup({
+    sources = {
+        -- Anything not supported by mason.
+    }
 })
 
 -- Required when `automatic_setup` is true
-require('mason-null-ls').setup_handlers()
+-- require('mason-null-ls').setup_handlers()
