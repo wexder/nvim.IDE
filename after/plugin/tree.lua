@@ -7,12 +7,12 @@ local function telescope_live_grep(_)
 end
 
 require("nvim-tree").setup({
-    sync_root_with_cwd = true,
-    respect_buf_cwd = true,
-    update_cwd = true,
+    -- sync_root_with_cwd = true,
+    -- respect_buf_cwd = true,
+    -- update_cwd = true,
     update_focused_file = {
         enable = true,
-        update_root = true
+        -- update_root = true
     },
     renderer = {
         highlight_git = true,
@@ -25,12 +25,12 @@ require("nvim-tree").setup({
     view = {
         mappings = {
             list = {
-                { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
-                { key = "h", action = "close_node" },
-                { key = "v", action = "vsplit" },
-                { key = "C", action = "cd" },
-                { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-                { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+                { key = { "l", "<CR>", "o" }, action = "edit",                 mode = "n" },
+                { key = "h",                  action = "close_node" },
+                { key = "v",                  action = "vsplit" },
+                { key = "C",                  action = "cd" },
+                { key = "gtf",                action = "telescope_find_files", action_cb = telescope_find_files },
+                { key = "gtg",                action = "telescope_live_grep",  action_cb = telescope_live_grep },
             }
         }
     }

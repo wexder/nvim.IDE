@@ -126,6 +126,7 @@ return require('packer').startup(function(use)
         config = function()
             require("project_nvim").setup {
                 ignore_lsp = { "sumneko_lua", "terraformls" },
+                detection_methods = { "pattern", "lsp" },
             }
         end
     }
@@ -155,4 +156,5 @@ return require('packer').startup(function(use)
     use { 'robertbasic/vim-hugo-helper' }
     -- Experimental
     -- use { "github/copilot.vim" }
+    use { 'mbledkowski/neuleetcode.vim' }
 end)
