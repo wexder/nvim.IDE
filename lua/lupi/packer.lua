@@ -156,5 +156,10 @@ return require('packer').startup(function(use)
     use { 'robertbasic/vim-hugo-helper' }
     -- Experimental
     -- use { "github/copilot.vim" }
+    use {
+        "chrsm/impulse.nvim",
+        requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    }
     use { 'mbledkowski/neuleetcode.vim' }
+    use { 'smithbm2316/centerpad.nvim' }
 end)
