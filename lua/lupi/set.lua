@@ -45,5 +45,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
+local markdown_group = vim.api.nvim_create_augroup('MarkdownSpell', { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        vim.opt.spell = true
+    end,
+    group = markdown_group,
+    pattern = '*.md',
+})
+vim.api.nvim_create_autocmd('BufLeave', {
+    callback = function()
+        vim.opt.spell = false
+    end,
+    group = markdown_group,
+    pattern = '*.md',
+})
+
 vim.opt.foldmethod = "expr"
 vim.opt.clipboard = "unnamedplus"
