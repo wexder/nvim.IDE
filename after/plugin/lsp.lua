@@ -25,6 +25,9 @@ lsp.configure('rust_analyzer', {
         ['rust-analyzer'] = {
             cargo = {
                 features = "all",
+                buildScripts = {
+                    enable = true
+                },
             },
             check = {
                 features = "all",
