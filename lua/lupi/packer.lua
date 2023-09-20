@@ -8,8 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use({
@@ -37,12 +36,13 @@ return require('packer').startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },             -- Required
             { 'williamboman/mason.nvim' },           -- Optional
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            { 'simrat39/rust-tools.nvim' },          -- Optional
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },         -- Required
@@ -60,10 +60,10 @@ return require('packer').startup(function(use)
 
     use({
         "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        tag = "v<CurrentMajor>.*",
-        -- install jsregexp (optional!:).
-        run = "make install_jsregexp"
+        run = "make install_jsregexp",
+        requires = {
+            { "rafamadriz/friendly-snippets" },
+        }
     })
 
     use 'nvim-tree/nvim-web-devicons'

@@ -37,3 +37,8 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set('n', '<leader>e', "<CMD>NvimTreeToggle<CR>")
+-- vim.g.netrw_keepdir = 0
+-- vim.g.netrw_winsize = 10
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_localcopydircmd = 'cp -r'
+-- vim.keymap.set('n', '<leader>e', "<CMD>Explore %:p:h<CR>")

@@ -1,26 +1,26 @@
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new({
-    cmd = "lazygit",
-    hidden = false,
-    direction = 'float',
-})
-function _lazygit_toggle()
-    lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap("n", "<leader>og", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-
-local lazydocker = Terminal:new({
-    cmd = "lazydocker",
-    hidden = false,
-    direction = 'float',
-})
-function _lazydocker_toggle()
-    lazydocker:toggle()
-end
-
-vim.api.nvim_set_keymap("n", "<leader>od", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
+-- local lazygit = Terminal:new({
+--     cmd = "lazygit",
+--     hidden = false,
+--     direction = 'float',
+-- })
+-- function _lazygit_toggle()
+--     lazygit:toggle()
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "<leader>og", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+--
+-- local lazydocker = Terminal:new({
+--     cmd = "lazydocker",
+--     hidden = false,
+--     direction = 'float',
+-- })
+-- function _lazydocker_toggle()
+--     lazydocker:toggle()
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "<leader>od", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 
 local term1 = Terminal:new({
     cmd = "zsh",
