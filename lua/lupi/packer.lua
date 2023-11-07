@@ -162,4 +162,6 @@ return require('packer').startup(function(use)
     }
     use { 'mbledkowski/neuleetcode.vim' }
     use { 'smithbm2316/centerpad.nvim' }
+
+    use { 'vrischmann/tree-sitter-templ' }
 end)
