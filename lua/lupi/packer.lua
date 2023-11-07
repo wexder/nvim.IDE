@@ -91,14 +91,6 @@ return require('packer').startup(function(use)
 
     }
     use {
-        'Chaitanyabsprip/present.nvim',
-        config = function()
-            require('present').setup {
-                -- ... your config here
-            }
-        end
-    }
-    use {
         'navarasu/onedark.nvim',
     }
     use {
