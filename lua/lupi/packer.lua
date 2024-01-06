@@ -156,4 +156,12 @@ return require('packer').startup(function(use)
     use { 'smithbm2316/centerpad.nvim' }
 
     use { 'vrischmann/tree-sitter-templ' }
+
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+    }
 end)
