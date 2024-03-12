@@ -5,16 +5,6 @@ end
 
 -- Determine OS
 local home = os.getenv "HOME"
-local launcher_path = vim.fn.glob(
-    home .. "/development/java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
-)
-if #launcher_path == 0 then
-    launcher_path = vim.fn.glob(
-            home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
-            1,
-            1
-        )[1]
-end
 if vim.fn.has "mac" == 1 then
     WORKSPACE_PATH = home .. "/workspace/"
     CONFIG = "mac"
@@ -32,132 +22,20 @@ if root_dir == "" then
     return
 end
 
-local extendedClientCapabilities = jdtls.extendedClientCapabilities
-extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-
 local workspace_dir = WORKSPACE_PATH .. project_name
 
--- NOTE: for debugging
--- git clone git@github.com:microsoft/java-debug.git ~/.config/lvim/.java-debug
--- cd ~/.config/lvim/.java-debug/
--- ./mvnw clean install
--- local bundles = vim.fn.glob(
---     home .. "/development/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
--- )
-local bundles = {
-    vim.fn.glob(home ..
-    "/development/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1),
-};
--- if #bundles == 0 then
---   bundles = vim.fn.glob(
---     home .. "/development/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
---     1,
---     1
---   )
--- end
-
-local config = {
+local config2 = {
     cmd = {
-        "java",
-        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-        "-Dosgi.bundles.defaultStartLevel=4",
-        "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.protocol=true",
-        "-Dlog.level=ALL",
-        "-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
-        "-Xms4g",
-        "--add-modules=ALL-SYSTEM",
-        "--add-opens",
-        "java.base/java.util=ALL-UNNAMED",
-        "--add-opens",
-        "java.base/java.lang=ALL-UNNAMED",
-        "-jar",
-        launcher_path,
-        "-configuration",
-        home .. "/development/java/jdtls/config_linux",
-        "-data",
+        'jdt-language-server',
+        '-data',
         workspace_dir,
     },
-    -- on_attach = function(client, bufnr)
-    --     jdtls.setup.add_commands()
-    --     jdtls.setup_dap {}
-    -- end,
     root_dir = root_dir,
-    settings = {
-        java = {
-            jdt = {
-                ls = {
-                    vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms200m"
-                }
-            },
-            eclipse = {
-                downloadSources = true,
-            },
-            configuration = {
-                updateBuildConfiguration = "interactive",
-            },
-            maven = {
-                downloadSources = true,
-            },
-            implementationsCodeLens = {
-                enabled = true,
-            },
-            referencesCodeLens = {
-                enabled = true,
-            },
-            references = {
-                includeDecompiledSources = true,
-            },
-            format = {
-                enabled = true,
-                comments = {
-                    enabled = false,
-                },
-                settings = {
-                    profile = "Steller",
-                    url = home .. "/.config/lvim/steller.xml",
-                },
-            },
-        },
-        signatureHelp = { enabled = true },
-        completion = {
-            favoriteStaticMembers = {
-                "org.hamcrest.MatcherAssert.assertThat",
-                "org.hamcrest.Matchers.*",
-                "org.hamcrest.CoreMatchers.*",
-                "org.junit.jupiter.api.Assertions.*",
-                "java.util.Objects.requireNonNull",
-                "java.util.Objects.requireNonNullElse",
-                "org.mockito.Mockito.*",
-            },
-        },
-        contentProvider = { preferred = "fernflower" },
-        extendedClientCapabilities = extendedClientCapabilities,
-        sources = {
-            organizeImports = {
-                starThreshold = 9999,
-                staticStarThreshold = 9999,
-            },
-        },
-        codeGeneration = {
-            toString = {
-                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-            },
-            useBlocks = true,
-        },
-    },
-    flags = {
-        allow_incremental_sync = true,
-        server_side_fuzzy_completion = true,
-    },
-    init_options = {
-        bundles = bundles,
-    },
+    settings = {},
 }
 
-config['on_attach'] = function(client, bufnr)
+config2['on_attach'] = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -179,7 +57,9 @@ config['on_attach'] = function(client, bufnr)
     -- you make during a debug session immediately.
     -- Remove the option if you do not want that.
     -- You can use the `JdtHotcodeReplace` command to trigger it manually
-    require('jdtls').setup_dap({})
-end
+    local jdtls = require('jdtls')
 
-require('jdtls').start_or_attach(config)
+    jdtls.setup.add_commands()
+    jdtls.setup_dap {}
+end
+require('jdtls').start_or_attach(config2)
