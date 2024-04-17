@@ -1,6 +1,19 @@
 local lsp = require("lsp-zero")
 
+-- require'lspconfig'.java_language_server.setup{
+--     cmd= {'java-language-server'},
+-- }
 require'lspconfig'.nil_ls.setup{}
+require'lspconfig'.gopls.setup{}
+
+require'lspconfig'.intelephense.setup{
+    cmd= {'intelephense', '--stdio'},
+}
+
+-- require'lspconfig'.gopls.setup{}
+require'lspconfig'.zls.setup{}
+
+require'lspconfig'.clojure_lsp.setup{}
 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -27,7 +40,11 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
-    enabled = true,
+    enabled = function ()
+        buftype = vim.api.nvim_buf_get_option(0, "buftype")
+        if buftype == "prompt" then return false end
+        return true
+    end,
     mapping = cmp.mapping.preset.insert({
         -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
@@ -107,7 +124,6 @@ require('mason-lspconfig').setup({
 })
 
 local rust_tools = require('rust-tools')
-
 rust_tools.setup({
     server = {
         on_attach = function(client, bufnr)

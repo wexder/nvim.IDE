@@ -9,7 +9,11 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            -- testing
+            {'mrcjkb/telescope-manix'},
+        }
     }
     use({
         'rose-pine/neovim',
@@ -131,7 +135,7 @@ return require('packer').startup(function(use)
     use("eandrju/cellular-automaton.nvim")
     use { "mfussenegger/nvim-jdtls" }
     use { 'mfussenegger/nvim-dap' }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
     use { "jose-elias-alvarez/null-ls.nvim" }
     use { "jay-babu/mason-null-ls.nvim" }
     use { "folke/neodev.nvim" }
