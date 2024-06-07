@@ -5,6 +5,9 @@ local lsp = require("lsp-zero")
 -- }
 require'lspconfig'.nil_ls.setup{}
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.golangci_lint_ls.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.clangd.setup{}
 
 require'lspconfig'.intelephense.setup{
     cmd= {'intelephense', '--stdio'},
