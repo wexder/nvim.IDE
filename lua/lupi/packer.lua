@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly',                   -- optional, updated every week. (see issue #1193)
+        -- tag = 'nightly',                   -- optional, updated every week. (see issue #1193)
     }
     use {
         "ahmedkhalf/project.nvim",
@@ -136,7 +136,7 @@ return require('packer').startup(function(use)
     use { "mfussenegger/nvim-jdtls" }
     use { 'mfussenegger/nvim-dap' }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
-    use { "jose-elias-alvarez/null-ls.nvim" }
+    use { "nvimtools/none-ls.nvim" }
     use { "jay-babu/mason-null-ls.nvim" }
     use { "folke/neodev.nvim" }
     use({
