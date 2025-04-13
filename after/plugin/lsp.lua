@@ -6,11 +6,28 @@ local lsp = require("lsp-zero")
 require'lspconfig'.nil_ls.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.golangci_lint_ls.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.clangd.setup{}
+require'lspconfig'.ts_ls.setup{}
+require'lspconfig'.regols.setup{}
+require'lspconfig'.hls.setup{}
+require'lspconfig'.clangd.setup{
+    cmd= { "clangd", "--background-index", "--query-driver=/home/wexder/.conan/data/**/g++-*" },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+}
 
 require'lspconfig'.intelephense.setup{
     cmd= {'intelephense', '--stdio'},
+}
+
+require'lspconfig'.pyright.setup{
+    filetypes = { "python" },
+    setting= {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true
+            }
+        }
+    }
 }
 
 -- require'lspconfig'.gopls.setup{}
