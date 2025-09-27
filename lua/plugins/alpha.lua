@@ -146,7 +146,12 @@ local function configure_additional_autocmds()
     })
 end
 
-local alpha = require("alpha")
-local config = resolve_config("dashboard")
-alpha.setup(config)
-configure_additional_autocmds()
+return {
+    'goolord/alpha-nvim',
+    init = function()
+        configure_additional_autocmds()
+    end,
+    config = function ()
+        require'alpha'.setup(resolve_config("dashboard"))
+    end
+}

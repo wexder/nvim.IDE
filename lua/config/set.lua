@@ -63,3 +63,18 @@ vim.api.nvim_create_autocmd('BufLeave', {
 
 vim.opt.foldmethod = "expr"
 vim.opt.clipboard = "unnamedplus"
+
+vim.diagnostic.config({
+    virtual_text = true,
+    severity_sort = true,
+    signs = true,
+    underline = true,
+    float = {
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+

@@ -1,1 +1,1 @@
-require("lupi")
+require("config")
