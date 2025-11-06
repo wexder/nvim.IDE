@@ -23,14 +23,18 @@ return {
             root_markers = { ".phpactor.json" },
         })
 
+        -- NOT yet ready but cool
+        -- vim.lsp.enable('zuban')
         vim.lsp.enable('pyright')
         vim.lsp.config('pyright', {
             filetypes = { "python" },
-            setting= {
+            settings = {
                 python = {
                     analysis = {
+                        typeCheckingMode = "strict",
+                        diagnosticMode = "workspace",
                         autoSearchPaths = true,
-                        useLibraryCodeForTypes = true
+                        useLibraryCodeForTypes = true,
                     }
                 }
             }
@@ -56,6 +60,7 @@ return {
                     },
                     check = {
                         features = "all",
+                        command = "clippy",
                     },
 
                 }
@@ -150,9 +155,5 @@ return {
         { 'hrsh7th/cmp-path' },         -- Optional
         { 'saadparwaiz1/cmp_luasnip' }, -- Optional
         { 'hrsh7th/cmp-nvim-lua' },     -- Optional
-
-        -- Snippets
-        { 'L3MON4D3/LuaSnip' }, -- Required
-
     }
 }
