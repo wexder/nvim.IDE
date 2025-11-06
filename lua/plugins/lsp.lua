@@ -10,6 +10,7 @@ return {
         vim.lsp.enable('hls')
         vim.lsp.enable('zls')
         vim.lsp.enable('clojure_lsp')
+        vim.lsp.enable('dartls')
 
         vim.lsp.enable('clangd')
         vim.lsp.config('clangd', {
