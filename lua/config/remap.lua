@@ -48,3 +48,8 @@ vim.keymap.set("n", "<c-up>", "<c-w>-")
 vim.keymap.set("n", "<c-down>", "<c-w>+")
 
 vim.keymap.set("n", "<leader>wf", "<cmd>vertical resize 1000<CR>")
+
+vim.api.nvim_create_user_command("LogNewline", function()
+    vim.cmd([[%s/\\n/\r/g]])
+    vim.cmd([[%s/\\t/\t/g]])
+end, { nargs = 0 })
