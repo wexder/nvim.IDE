@@ -78,3 +78,8 @@ vim.diagnostic.config({
     },
 })
 
+vim.filetype.add({
+  extension = {
+    ato = "ato",
+  },
+})

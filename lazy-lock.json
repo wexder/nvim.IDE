@@ -35,5 +35,5 @@
   "undotree": { "branch": "master", "commit": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d" },
   "vim-alloy": { "branch": "main", "commit": "0273f88f7199189f9a0f32213a34ab778e226f86" },
   "vim-hugo-helper": { "branch": "master", "commit": "4c776e62f928338162b41152f53052a8311a2f4b" },
-  "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" }
+  "vim-illuminate": { "branch": "master", "commit": "91313e598ca62e110bc71535c49069b66b9883c9" }
 }
