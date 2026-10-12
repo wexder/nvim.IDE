@@ -64,16 +64,8 @@ function M.get_sections()
             spacing = 1,
         },
         entries = {
-            { "f", icons.FindFile .. "  Find File", "<CMD>Telescope find_files<CR>" },
-            { "n", icons.NewFile .. "  New File", "<CMD>ene!<CR>" },
-            { "p", icons.Project .. "  Projects ", "<CMD>Telescope projects<CR>" },
-            { "r", icons.History .. "  Recent files", ":Telescope oldfiles <CR>" },
-            { "t", icons.FindText .. "  Find Text", "<CMD>Telescope live_grep<CR>" },
-            -- {
-            --     "c",
-            --     lvim.icons.ui.Gear .. "  Configuration",
-            --     "<CMD>edit " .. require("lvim.config"):get_user_config_path() .. " <CR>",
-            -- },
+            { "f", icons.FindFile .. "  Find File", "<CMD>lua require('fff').find_files()<CR>" },
+            { "t", icons.FindText .. "  Find Text", "<CMD>lua require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } })<CR>" },
         },
     }
     return {

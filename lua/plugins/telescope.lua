@@ -36,17 +36,17 @@ return {
         end,
         init = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>f', builtin.git_files, {})
-            vim.keymap.set('n', "<leader>sp", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
-            vim.keymap.set('n', '<leader>ps', function()
-                builtin.grep_string({ search = vim.fn.input("Grep > ") })
-            end)
-            vim.keymap.set('n', '<leader>st', builtin.live_grep, {})
-
-            require('telescope').load_extension('projects')
-            require('telescope').load_extension('manix')
-            require("telescope").load_extension("dir")
+            -- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+            -- -- vim.keymap.set('n', '<leader>f', builtin.git_files, {})
+            -- vim.keymap.set('n', "<leader>sp", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
+            -- vim.keymap.set('n', '<leader>ps', function()
+            --     builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            -- end)
+            -- vim.keymap.set('n', '<leader>st', builtin.live_grep, {})
+            --
+            -- require('telescope').load_extension('projects')
+            -- require('telescope').load_extension('manix')
+            -- require("telescope").load_extension("dir")
         end,
     } 
 }
