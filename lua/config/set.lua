@@ -34,52 +34,55 @@ vim.opt.ignorecase = true
 -- vim.opt.colorcolumn = "80"
 --
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.completeopt = "menu,menuone,noselect"
 
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
-local markdown_group = vim.api.nvim_create_augroup('MarkdownSpell', { clear = true })
-vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-        vim.opt.spell = true
-    end,
-    group = markdown_group,
-    pattern = '*.md',
+local markdown_group = vim.api.nvim_create_augroup("MarkdownSpell", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		vim.opt.spell = true
+	end,
+	group = markdown_group,
+	pattern = "*.md",
 })
-vim.api.nvim_create_autocmd('BufLeave', {
-    callback = function()
-        vim.opt.spell = false
-    end,
-    group = markdown_group,
-    pattern = '*.md',
+vim.api.nvim_create_autocmd("BufLeave", {
+	callback = function()
+		vim.opt.spell = false
+	end,
+	group = markdown_group,
+	pattern = "*.md",
 })
 
--- vim.opt.foldmethod = "expr"
+-- Explicitly use OSC 52 for the system clipboard
+vim.g.clipboard = "osc52"
+
+-- Make regular yanks use the system clipboard
 vim.opt.clipboard = "unnamedplus"
 
 vim.diagnostic.config({
-    virtual_text = true,
-    severity_sort = true,
-    signs = true,
-    underline = true,
-    float = {
-        style = 'minimal',
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
-    },
+	virtual_text = true,
+	severity_sort = true,
+	signs = true,
+	underline = true,
+	float = {
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
 })
 
 vim.filetype.add({
-  extension = {
-    ato = "ato",
-  },
+	extension = {
+		ato = "ato",
+	},
 })
